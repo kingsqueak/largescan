@@ -1,0 +1,3 @@
+# For python3 largescan.py before the command is installed.
+# pipx install --editable . uses pyproject.toml instead.
+textual>=8,<9

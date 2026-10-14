@@ -1,0 +1,75 @@
+largescan
+=========
+
+Mac-only. It finds large folders, large files, and Library data left
+behind by apps that are no longer installed.
+
+Run
+---
+
+    largescan
+    largescan ~/Downloads
+
+From a checkout, before that command is installed:
+
+    python3 largescan.py
+    python3 largescan.py ~/Downloads
+
+Install the command once, from this folder:
+
+    brew install pipx
+    pipx install --editable .
+
+That install includes the interface. To run largescan.py without
+installing the command:
+
+    pip3 install -r requirements.txt
+
+The screen
+----------
+
+The header shows the path of the last scan.
+
+Type a folder path in the box and press Enter, or press Scan.
+A leading ~ is expanded. The scan does not follow symbolic links.
+
+Folders
+    Every folder larger than 1 GB (1,073,741,824 bytes), largest first.
+    A folder's size is the total size of the files inside it,
+    including its subfolders. The folder you typed is not in
+    this list. Its total is on the summary line.
+
+Files
+    Every file larger than 1 MB (1,048,576 bytes), largest first.
+
+Orphans
+    Data under ~/Library whose app is no longer installed.
+    This tab always reads your Library, even when the path box
+    points somewhere else. Nothing is deleted.
+
+    Abandoned
+        A bundle identifier with no installed app.
+    Possible leftover
+        A folder name that matches no installed app. A shared
+        vendor folder can outlive one app. Confirm before you
+        delete anything.
+    Missing helper
+        A Launch Agent whose program file is gone.
+
+Sizes use 1024-based units (KB, MB, GB). Over 1 MB is cyan, over
+100 MB is yellow, and over 1 GB is red.
+
+Keys
+----
+
+    enter     Scan the path in the box
+    ?         Open this help
+    q         Quit, unless the path box is focused
+    tab       Move between the path box, buttons, and tables
+    arrows    Move through the rows in the focused table
+
+Each tab scrolls. Rank and size stay on screen while a long path
+scrolls sideways.
+
+This help file ships inside the largescan package. The Help screen
+also prints that path.

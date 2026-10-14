@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "largescan"
+version = "0.1.0"
+description = "Mac-only browser for large folders, large files, and leftover Library data."
+requires-python = ">=3.9"
+dependencies = [
+    "textual>=8,<9",
+]
+
+[project.scripts]
+largescan = "largescan:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+largescan = ["HELP.txt"]
